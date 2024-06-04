@@ -9,38 +9,7 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
-provider "aws" {
-  region = "us-east-1" # Change to your preferred region ** HAS TO MATCH AWS CLI CREDENTIALS REGION
-}
 
-resource "aws_security_group" "minecraft_sg" {
-  name_prefix = "minecraft_sg"
-
-  ingress {
-    from_port   = 25565
-    to_port     = 25565
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 20
-    to_port     = 20
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "minecraft-sg"
-  }
-}
 
 resource "aws_instance" "minecraft_server" {
   ami                         = "ami-04b70fa74e45c3917" # Canonical, Ubuntu, 24.04 LTS, amd64 noble image build on 2024-04-23 (for us-east-1)
@@ -68,6 +37,7 @@ resource "aws_instance" "minecraft_server" {
               [Service]
               Restart=always
               ExecStart=/usr/bin/docker run -d -p 25565:25565 -e EULA=TRUE itzg/minecraft-server
+              ExecStop=/usr/bin/docker exec mc rcon-cli stop
               ExecStop=/usr/bin/docker stop %n
 
               [Install]
@@ -87,4 +57,8 @@ resource "aws_instance" "minecraft_server" {
 
 output "instance_public_ip" {
   value = aws_instance.minecraft_server.public_ip
+}
+
+output "vpc_security_group_ids" {
+  value = aws_instance.minecraft_server.vpc_security_group_ids
 }
