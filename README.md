@@ -43,3 +43,5 @@ ok now it should output the instance_public_ip="<generic_ip_here>"
 copy that into your minecraft server address on the minecraft client
 
 connect, and have fun!
+
+hold on: using this https://github.com/DavidMikeSimon/McTerraform/
