@@ -18,7 +18,7 @@ I also drew file-separation inspiration from this repository, though I did not u
 
 | Software | link to download |
 |---------|-----------|
-| 🧡 AWS CLI  | [AWS CLI Install guide]([awslink](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions))|
+| 🧡 AWS CLI  | [AWS CLI Install guide]((https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions))|
 | 💜 Terraform| [HashiCorp Terraform Install Guide](https://developer.hashicorp.com/terraform/install)|
 
 <br>
