@@ -10,9 +10,9 @@ terraform {
 }
 
 
-
 resource "aws_instance" "minecraft_server" {
-  ami                         = "ami-04b70fa74e45c3917" # Canonical, Ubuntu, 24.04 LTS, amd64 noble image build on 2024-04-23 (for us-east-1)
+  ami = "ami-04b70fa74e45c3917" # Canonical, Ubuntu, 24.04 LTS, amd64 noble image build on 2024-04-23 (for us-east-1)
+  # change the "ami" field to your region's ami for ubuntu 24. If using us-east-1, leave as is (6-8-2024)
   instance_type               = "t2.medium"
   key_name                    = "my-minecraft-key"
   associate_public_ip_address = true
