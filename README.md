@@ -39,7 +39,7 @@ mkdir ~/.aws/
 Place your AWS credentials _([how to find](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html))_ in your ~/.aws/credentials for terraform to use. 
 
 ```bash
-echo "[REPLACE THIS WITH YOUR AWS CLI CREDENTIALS]" >> ~/.aws/credentials
+echo "[REPLACE_WITH_AWS_CLI_CREDENTIALS]" >> ~/.aws/credentials
 ```
 
 Create a keypair for your scripts to authenticate with! Keep in mind, you will need this specific keypair in the case you want to access the minecraft server. 
